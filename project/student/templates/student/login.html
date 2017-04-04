@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+    {% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" type = "text/css" />
+
+
+
+</head>
+<body >
+<div id="main">
+
+    <div id="button">
+     <ul>
+     <li><a href="{% url 'student:login' %}" class="c" id="s2">login/register </a> </li>
+
+     </ul>
+    </div>
+     <div id="content" style="background-image: url('{% static "images/nikki.jpg"%}')">
+<h2>User Login</h2>
+
+ <form action="{% url 'student:login' %}" method="post" autocomplete="off" >
+     {% csrf_token %}
+ <div class="nik">
+ <h1>Username:</h1>
+{{ form.username}}<br><br><br>
+ <h1>Password:</h1>
+  {{ form.password}}   <br><br><br>
+<input type="submit" value="   login   " class="btn btn-default btn-lg" /><br><br>
+     <h3><a href="{% url 'student:signup' %}" id="s1"> New User?</a></h3>
+{% if is_registered %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+ </div>
+</form>
+     </div>
+    <div id="footer"><center> <h4> copyright &copy;.all rights reserved.</h4> </center></div>
+<script type="text/javascript">
+if(window.history && history.pushState){
+	window.addEventListener('load', function(){
+
+		history.pushState(-1, null);
+		history.pushState(0, null);
+		history.pushState(1, null);
+		history.go(-1);
+
+		this.addEventListener('popstate', function(event, state){
+
+			if(state = event.state){
+
+				event = document.createEvent('Event');
+				event.initEvent(state > 0 ? 'next' : 'previous', true, true);
+				this.dispatchEvent(event);
+
+				history.go(-state);
+			}
+		}, false);
+	}, false);
+}
+</script>
+
+</div>
+
+
+</body>
+</html>

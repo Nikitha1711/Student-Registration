@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+    {% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" type = "text/css" />
+
+</head>
+<body>
+
+<div id="main">
+
+    <div id="button">
+     <ul>
+     <li><a href="{% url 'student:login' %}" class="c">login/register </a> </li>
+
+     </ul>
+    </div>
+     <div id="content" style="background-image: url('{% static "images/nikki.jpg"%}')">
+<h2>Register</h2>
+
+    <form action="{% url 'student:signup' %}" method="post" autocomplete="off" >
+    {% csrf_token %}
+        <div class="nik">
+            <h1>Username:</h1>
+           {{ form.username}}<br><br>
+            <h1>Name:</h1>
+           {{ form.name}}   <br><br>
+            <h1>Date of Birth(DD-MM-YYY):</h1>
+           {{ form.dob}}   <br><br>
+            <h1>E-mail:</h1>
+           {{ form.email}}<br><br>
+            <h1>Roll Number:</h1>
+           {{ form.roll}}   <br><br>
+             <h1>Phone:</h1>
+           {{ form.phone}}<br><br>
+            <h1>Department:</h1>
+           {{ form.department}}   <br><br>
+            <h1>Password:</h1>
+           {{ form.password}}<br><br>
+            <h1>Re-Enter Password:</h1>
+           {{ form.password1}}<br><br>
+
+    <input type="submit" class="btn btn-default btn-lg" value="Submit">
+        </div>
+    </form>
+
+
+     </div>
+    <div id="footer"><center> <h4> copyright &copy;.all rights reserved.</h4> </center></div>
+
+<script type="text/javascript">
+if(window.history && history.pushState){
+	window.addEventListener('load', function(){
+
+		history.pushState(-1, null);
+		history.pushState(0, null);
+		history.pushState(1, null);
+		history.go(-1);
+
+		this.addEventListener('popstate', function(event, state){
+
+			if(state = event.state){
+
+				event = document.createEvent('Event');
+				event.initEvent(state > 0 ? 'next' : 'previous', true, true);
+				this.dispatchEvent(event);
+
+				history.go(-state);
+			}
+		}, false);
+	}, false);
+}
+</script>
+
+</div>
+</body>
+</html>

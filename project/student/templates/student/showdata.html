@@ -1,0 +1,77 @@
+
+{% if obj %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+    {% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" type = "text/css" />
+
+</head>
+
+    <body>
+
+<div id="main">
+
+    <div id="button">
+     <ul>
+     <li><a  class="c">login/register </a> </li>
+
+         <li><a href="{% url 'student:login' %}" class="d">logout</a> </li>
+     </ul>
+    </div>
+     <div id="content" style="background-image: url('{% static "images/nikki.jpg"%}')">
+         <div class="n"> Logged in as {{ obj.name }}!! </div>
+    <h2>Student Details</h2>
+ <div class="nik">
+ <h1>Name:</h1>
+<h3>{{ obj.username}}</h3><br><br>
+     <h1>Date of Birth:</h1>
+ <h3> {{ obj.dob}} </h3>  <br><br>
+ <h1>E-mail:</h1>
+ <h3> {{ obj.email}} </h3>  <br><br>
+  <h1>Phone number:</h1>
+<h3>{{ obj.phone}}</h3><br><br>
+   <h1>Roll Number:</h1>
+<h3>{{ obj.roll}}</h3><br><br>
+ <h1>Department:</h1>
+<h3>  {{ obj.department}}  </h3> <br><br>
+
+
+ </div>
+
+
+{% else %}
+<h3> No users found.</h3>
+{% endif %}
+     </div>
+    <div id="footer"><center> <h4> copyright &copy;.all rights reserved.</h4> </center></div>
+<script type="text/javascript">
+if(window.history && history.pushState){
+	window.addEventListener('load', function(){
+
+		history.pushState(-1, null);
+		history.pushState(0, null);
+		history.pushState(1, null);
+		history.go(-1);
+
+		this.addEventListener('popstate', function(event, state){
+
+			if(state = event.state){
+
+				event = document.createEvent('Event');
+				event.initEvent(state > 0 ? 'next' : 'previous', true, true);
+				this.dispatchEvent(event);
+
+				history.go(-state);
+			}
+		}, false);
+	}, false);
+}
+</script>
+
+
+</div>
+</body>
+</html>
